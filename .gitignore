@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 *.db
+.gitKey
 
 # Object files
 *.o
