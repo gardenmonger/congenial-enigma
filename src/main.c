@@ -22,7 +22,8 @@ int main(int argc, char *argv[]) {
 	int c;
 
 	int dbfd = -1;
-	struct  dbheader_t *dbhdr = NULL;
+	struct dbheader_t  *dbhdr = NULL;
+	struct employees_t *employees = NULL;
 
 	while((c = getopt(argc, argv, "nf:")) != -1) {
 		switch(c) {
@@ -75,6 +76,11 @@ int main(int argc, char *argv[]) {
 
 	printf("Newfile: %d\n", newfile);
 	printf("Filepath: %s\n", filepath);
+
+	if (read_employees(dbfd, dbhdr, &employees) != STATUS_SUCCESS) {
+		printf("failed to read employees");
+		return 0;
+	}
 
 	output_file(dbfd, dbhdr);
 
