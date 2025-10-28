@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	unsigned short port = 0;
 	bool newfile = false;
 	bool list = false;
-  char *addstring = NULL;
+	char *addstring = NULL;
 	int c;
 
 	int dbfd = -1;
@@ -41,9 +41,9 @@ int main(int argc, char *argv[]) {
 			case 'p':
 				portarg = optarg;
 				break;
-      case 'a':
-        addstring = optarg;
-        break;
+      			case 'a':
+        			addstring = optarg;
+        			break;
 			case 'l':
 				list = true;
 				break;
