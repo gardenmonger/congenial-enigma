@@ -140,10 +140,16 @@ int validate_db_header(int fd, struct dbheader_t **headerOut) {
 	}
 
 	*headerOut = header;
+
+	return STATUS_SUCCESS;
+
 }
 
 int create_db_header(int fd, struct dbheader_t **headerOut) {
-	fd = 0;
+	if (fd < 0) {
+		printf("Got a bad header from user \n");
+		return STATUS_ERROR;	
+	}
 	struct dbheader_t *header = calloc(1, sizeof(struct dbheader_t));
 	if (header == (void*)-1) {
 		printf("Malloc failed to create db header\n");
