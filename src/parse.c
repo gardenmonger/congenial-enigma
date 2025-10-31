@@ -145,7 +145,7 @@ int validate_db_header(int fd, struct dbheader_t **headerOut) {
 
 }
 
-int create_db_header(int fd, struct dbheader_t **headerOut) {
+int create_db_header(struct dbheader_t **headerOut) {
 	if (fd < 0) {
 		printf("Got a bad header from user \n");
 		return STATUS_ERROR;	
