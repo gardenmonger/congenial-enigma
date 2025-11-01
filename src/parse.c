@@ -31,7 +31,7 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
 
 	addr = strtok(NULL, ",");
 
-	*hours = strtok(NULL, ",");
+	hours = strtok(NULL, ",");
 
 	printf("%s %s %s\n", name, addr, hours);
 
