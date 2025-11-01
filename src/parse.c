@@ -21,7 +21,9 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
 }
 
 int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring) {
-
+	if (!dbhdr || !employees || !addstring) return STATUS_FAIL;
+	if (dbhdr->count < 0) return STATUS_ERROR;
+	
 	printf("%s\n", addstring);
 
 	char *name = strtok(addstring, ",");
