@@ -21,23 +21,33 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
 }
 
 int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring) {
-	char *name  = NULL;
-	char *addr  = NULL;
-	char *hours = NULL;
 
 	printf("%s\n", addstring);
 
-	name = strtok(addstring, ",");
+	char *name = strtok(addstring, ",");
 
-	addr = strtok(NULL, ",");
+	char *addr = strtok(NULL, ",");
 
-	hours = strtok(NULL, ",");
+	char *hours = strtok(NULL, ",");
+
+	if (!name || !addr || !hours) {
+		printf("Error: INVALID! addstring format!\n");
+		return STATUS_ERROR;
+	}
+
+	int index = dbhdr->count;
+	
+	dbhdr->count++;
 
 	printf("%s %s %s\n", name, addr, hours);
 
 	
 	strncpy(employees[dbhdr->count-1].name, name, sizeof(employees[dbhdr->count-1].name));
+	employees[index].name[sizeof(employees[index].name) - 1] = '\0';
+
 	strncpy(employees[dbhdr->count-1].address, addr, sizeof(employees[dbhdr->count-1].address));
+	employees[index].address[sizeof(employees[index].address) - 1] = '\0';
+
 
 	employees[dbhdr->count-1].hours = atoi(hours);
 	
