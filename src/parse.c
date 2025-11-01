@@ -49,7 +49,7 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
 	employees[dbhdr->count].address[sizeof(employees[dbhdr->count].address) - 1] = '\0';
 
 
-	employees[index].hours = atoi(hours);
+	employees[dbhdr->count].hours = atoi(hours);
 	
 
 	return STATUS_SUCCESS;
