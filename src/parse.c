@@ -44,7 +44,7 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
 	printf("%s %s %s\n", name, addr, hours);
 
 	strncpy(employees[index].name, name, sizeof(employees[index].name) - 1);
-	employees[index].name[sizeof(employee[index].name) - 1] = '\0';
+	employees[index].name[sizeof(employees[index].name) - 1] = '\0';
 	strncpy(employees[index].address, addr, sizeof(employees[index].address) - 1);
 	employees[index].address[sizeof(employees[index].address) - 1] = '\0';
 
