@@ -37,16 +37,16 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
 		return STATUS_ERROR;
 	}
 
-	int index = dbhdr->count;
+//	int index = dbhdr->count;
 	
-	dbhdr->count++;
+//	dbhdr->count++;
 
 	printf("%s %s %s\n", name, addr, hours);
 
-	strncpy(employees[index].name, name, sizeof(employees[index].name) - 1);
-	employees[index].name[sizeof(employees[index].name) - 1] = '\0';
-	strncpy(employees[index].address, addr, sizeof(employees[index].address) - 1);
-	employees[index].address[sizeof(employees[index].address) - 1] = '\0';
+	strncpy(employees[dbhdr->count].name, name, sizeof(employees[dbhdr->count].name) - 1);
+	employees[dbhdr->count].name[sizeof(employees[dbhdr->count].name) - 1] = '\0';
+	strncpy(employees[dbhdr->count].address, addr, sizeof(employees[dbhdr->count].address) - 1);
+	employees[dbhdr->count].address[sizeof(employees[dbhdr->count].address) - 1] = '\0';
 
 
 	employees[index].hours = atoi(hours);
