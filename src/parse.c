@@ -22,7 +22,7 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
 
 int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring) {
 	if (!dbhdr || !employees || !addstring) return STATUS_ERROR;
-	if (dbhdr->count < 0) return STATUS_ERROR;
+//	if (dbhdr->count < 0) return STATUS_ERROR;
 	
 	printf("%s\n", addstring);
 
@@ -32,6 +32,8 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
 
 	char *hours = strtok(NULL, ",");
 
+	printf("%s %s %s\n", name, addr, hours);
+
 	if (!name || !addr || !hours) {
 		printf("Error: INVALID! addstring format!\n");
 		return STATUS_ERROR;
@@ -39,17 +41,14 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
 
 	int index = dbhdr->count;
 	
-	dbhdr->count++;
 
-	printf("%s %s %s\n", name, addr, hours);
-
-	strncpy(employees[index].name, name, sizeof(employees[index].name) - 1);
-	employees[index].name[sizeof(employees[index].name) - 1] = '\0';
-	strncpy(employees[index].address, addr, sizeof(employees[index].address) - 1);
-	employees[index].address[sizeof(employees[index].address) - 1] = '\0';
+	strncpy(employees[index-1].name, name, sizeof(employees[index].name));
+//	employees[index-1].name[sizeof(employees[index].name) - 1] = '\0';
+	strncpy(employees[index-1].address, addr, sizeof(employees[index].address));
+//	employees[index-1].address[sizeof(employees[index].address) - 1] = '\0';
 
 
-	employees[index].hours = atoi(hours);
+	employees[index-1].hours = atoi(hours);
 	
 
 	return STATUS_SUCCESS;
