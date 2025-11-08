@@ -20,7 +20,7 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
 	}
 }
 
-int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring) {
+int add_employee(struct dbheader_t *dbhdr, struct employee_t **employees, char *addstring) {
 	if (!dbhdr || !employees || !addstring) return STATUS_ERROR;
 //	if (dbhdr->count < 0) return STATUS_ERROR;
 	
