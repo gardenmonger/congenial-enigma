@@ -20,7 +20,7 @@ void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
 	}
 }
 
-int add_employee(struct dbheader_t *dbhdr, struct employee_t **employees, char *addstring) {
+int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring) {
 	if (!dbhdr || !employees || !addstring) return STATUS_ERROR;
 //	if (dbhdr->count < 0) return STATUS_ERROR;
 	
@@ -42,9 +42,9 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t **employees, char *
 	int index = dbhdr->count;
 	
 
-	strncpy(employees[index-1].name, name, sizeof(employees[index].name));
+	strncpy(employees[index-1].name, name, sizeof(employees[index-1].name));
 //	employees[index-1].name[sizeof(employees[index].name) - 1] = '\0';
-	strncpy(employees[index-1].address, addr, sizeof(employees[index].address));
+	strncpy(employees[index-1].address, addr, sizeof(employees[index-1].address));
 //	employees[index-1].address[sizeof(employees[index].address) - 1] = '\0';
 
 
